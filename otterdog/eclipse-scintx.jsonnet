@@ -34,7 +34,11 @@ orgs.newOrg('technology.scintx', 'eclipse-scintx') {
           include_refs+: [
             "~DEFAULT_BRANCH"
           ],
-          required_status_checks: null,
+          required_status_checks: orgs.newStatusChecks() {
+            status_checks: [
+              "eclipse-eca-validation:eclipsefdn/eca",
+            ],
+          },
           requires_commit_signatures: true,
           required_pull_request+: {
             required_approving_review_count: 1,
